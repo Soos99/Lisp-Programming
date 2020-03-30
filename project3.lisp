@@ -1,6 +1,6 @@
 ;Required Functions
 ;Check if a number is deficient
-(defun deficientp (x)
+(defun deficientp-content (x)
     (cond
         ((<= x 0) "Error. It doesn't make sense to consider negative numbers or 0")
         (
@@ -8,8 +8,14 @@
         )
     )
 )
+(defun deficientp (x)
+    (write (deficientp-content x))
+    (terpri)
+    (repl #'deficientp-content 'deficientp)
+)
+
 ;Check if a number is abundant
-(defun abundantp (x)
+(defun abundantp-content (x)
     (cond
         ((<= x 0) "Error. It doesn't make sense to consider negative numbers or 0")
         (
@@ -17,8 +23,14 @@
         )
     )
 )
+(defun abundantp (x)
+    (write (abundantp-content x))
+    (terpri)
+    (repl #'abundantp-content 'abundantp)
+)
+
 ;Check if a number is perfect
-(defun perfectp (x)
+(defun perfectp-content (x)
     (cond
         ((<= x 0) "Error. It doesn't make sense to consider negative numbers or 0")
         (
@@ -26,9 +38,14 @@
         )
     )
 )
+(defun perfectp (x)
+    (write (perfectp-content x))
+    (terpri)
+    (repl #'perfectp-content 'perfectp)
+)
 
 ;Get the sum of list x
-(defun getSumFactor(x)
+(defun getSumFactor (x)
     (cond 
         ((null x) 0)
         ((+ (car x) (getSumFactor(cdr x))))
@@ -36,7 +53,7 @@
 )
 
 ;Get list of factors of x
-(defun getListFactor(x curr)
+(defun getListFactor (x curr)
     (cond 
         ((eql x 1) (1)) 
         ((eql curr 0) ())
@@ -59,9 +76,10 @@
     )
 )
 
+;-------------------------------------------------------------------
 ;Math Functions
 ;N-th Fibonacci Number
-(defun nth-fibo (x) 
+(defun nth-fibo-content (x) 
     (cond 
         ((< x 0) "Error. Cannot be negative")
         ((eql x 0) 0)
@@ -70,12 +88,19 @@
                 1
         )
         (
-            (+ (nth-fibo (- x 1)) (nth-fibo (- x 2))) 
+            (+ (nth-fibo-content (- x 1)) (nth-fibo-content (- x 2))) 
         )
     )
 )
+(defun nth-fibo (x)
+    (write (nth-fibo-content x))
+    (terpri)
+    (repl #'nth-fibo-content 'nth-fibo)
+)
+
+
 ;Right-Tri
-(defun right-tri(x y z)
+(defun right-tri-content(x y z)
     (and 
         (and 
             (and 
@@ -89,57 +114,90 @@
             (* z z))  
     )
 )
+(defun right-tri (x y z)
+    (write (right-tri-content x y z))
+    (terpri)
+    (repl #'right-tri-content 'right-tri)
+)
+
 ;Factorial
-(defun factorial (x)
+(defun factorial-content (x)
     (cond 
         ((< x 0) "Error")
         ((or (eql x 0) (eql x 1)) 1)
         (
-            (* x (factorial (- x 1)))
+            (* x (factorial-content (- x 1)))
         )
     )
 )
+(defun factorial (x)
+    (write (factorial-content x))
+    (terpri)
+    (repl #'factorial-content 'factorial)
+)
+
 ;Absolute value
-(defun abs(x) 
+(defun abs-content(x) 
     (cond
         ((> x 0) x )
         ((- 0 x))
     )
 )
+(defun abs (x)
+    (write (abs-content x))
+    (terpri)
+    (repl #'abs-content 'abs)
+)
 
-
+;------------------------------------------------------------
 ;Set functions
 ;Set union 
-(defun union (A B) 
+(defun union-content (A B) 
     (cond 
         ((null A) B)
         (
-            (not (member (car A) B))
-                (cons (car A) (union (cdr A) B))
+            (not (member-content (car A) B))
+                (cons (car A) (union-content (cdr A) B))
         )
         (
-            (union (cdr A) B)
+            (union-content (cdr A) B)
         )
     )
 )
+(defun union (A B)
+    (write (union-content A B))
+    (terpri)
+    (princ "----Input list of arguments without quotes (EX: ((a b c) (b c d)))----")
+    (terpri)
+    (repl #'union-content 'union)
+)
+
 ;Set Intersection
-(defun intersection (A B)
+(defun intersection-content (A B)
     (cond
         ((null A) ())
         (
-            (member (car A) B)
-                (cons (car A) (intersection (cdr A) B))
+            (member-content (car A) B)
+                (cons (car A) (intersection-content (cdr A) B))
         )
         (
-            (intersection (cdr A) B)
+            (intersection-content (cdr A) B)
         )
     )
 )
+(defun intersection (A B)
+    (write (intersection-content A B))
+    (terpri)
+    (princ "----Input list of arguments without quotes (EX: ((a b c) (b c d)))----")
+    (terpri)
+    (repl #'intersection-content 'intersection)
+)
+
 ;Insert element into set
-(defun insert (e L)
+(defun insert-content (e L)
     (cond
         (
-            (member e L)
+            (member-content e L)
                 L
         )
         (
@@ -147,8 +205,16 @@
         )
     )
 )
+(defun insert (e L)
+    (write (insert-content e L))
+    (terpri)
+    (princ "----Input list of arguments without quotes (EX: (a (b c d)))----")
+    (terpri)
+    (repl #'insert-content 'intersection)
+)
+
 ;Set membership
-(defun member (e L)
+(defun member-content (e L)
     (cond
         ((null L) nil)
         (
@@ -156,50 +222,82 @@
                 t
         )
         (
-            (member e (cdr L))
+            (member-content e (cdr L))
         )
 
     )
 )
+(defun member (e L)
+    (write (member-content e L))
+    (terpri)
+    (princ "----Input list of arguments without quotes (EX: (a (b c a d)))----")
+    (terpri)
+    (repl #'member-content 'member)
+)
 
-
+;-------------------------------------------------------------------------
 ;List functions
 ;Remove-all function
-(defun remove-all(e L)
+(defun remove-all-content (e L)
     (cond
         ((null L) ())
         (
             (not (eq (car L) e))
-                (cons (car L) (remove-all e (cdr L)))
+                (cons (car L) (remove-all-content e (cdr L)))
         )
         (
-            (remove-all e (cdr L))
+            (remove-all-content e (cdr L))
         )
     )
 )
+(defun remove-all(e L)
+    (write (remove-all-content e L))
+    (terpri)
+    (princ "----Input list of arguments without quotes (EX: (a (b a c a a d a)))----")
+    (terpri)
+    (repl #'remove-all-content 'remove-all)
+)
+
 ;Index of
-(defun indexof (e L)
+(defun indexof-content (e L)
     (cond
         ((null L) -1)
         ((eq (car L) e) 0)
         (
-            (> (indexof e (cdr L)) -1)
-                (+  (indexof e (cdr L)) 1)           
+            (> (indexof-content e (cdr L)) -1)
+                (+  (indexof-content e (cdr L)) 1)           
         )
         ( -1 )
     )
 )
+(defun indexof (e L)
+    (write (indexof-content e L))
+    (terpri)
+    (princ "----Input list of arguments without quotes (EX: (a (b c a d)))----")
+    (terpri)
+    (repl #'indexof-content 'indexof)
+)
+
+
 ;Append two lists
-(defun append (x y)
+(defun append-content (x y)
     (cond 
         ((null x) y)
         (
-            (cons (car x) (append (cdr x) y))
+            (cons (car x) (append-content (cdr x) y))
         )
     )
 )
+(defun append (x y)
+    (write (append-content x y))
+    (terpri)
+    (princ "----Input list of arguments without quotes (EX: ((1 3 x a) (4 2 b)))----")
+    (terpri)
+    (repl #'append-content 'append)
+)
+
 ;Reverse a list
-(defun reverse (L)
+(defun reverse-content (L)
     (callReverse L '())
 )
 (defun callReverse (L add)
@@ -208,5 +306,27 @@
         (
             (callReverse (cdr L) (cons (car L) add))
         )
+    )
+)
+(defun reverse (L)
+    (write (reverse-content L))
+    (terpri)
+    (princ "----Input list of arguments without quotes (EX: ((a b c d))----")
+    (terpri)
+    (repl #'reverse-content 'reverse)
+)
+
+;REPL
+(defun repl (fun name)
+    (format t"Enter a list of arguements for ~s (empty list to stop): " name)
+    (force-output nil)
+    (setq input (read))
+    (cond
+        ((not (null input)) 
+            (write (apply fun input))
+            (terpri)
+            (repl fun name)
+        )
+        ('Ok)
     )
 )
