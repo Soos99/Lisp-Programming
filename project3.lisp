@@ -289,11 +289,15 @@
     )
 )
 (defun append (x y)
-    (write (append-content x y))
-    (terpri)
-    (princ "----Input list of arguments without quotes (EX: ((1 3 x a) (4 2 b)))----")
-    (terpri)
-    (repl #'append-content 'append)
+    (cond 
+        ((not (null y))
+            (write (append-content x y))
+            (terpri)
+            (princ "----Input list of arguments without quotes (EX: ((1 3 x cak) (4 2 b)))----")
+            (terpri)
+            (repl #'append-content 'append)
+        )
+    )
 )
 
 ;Reverse a list
