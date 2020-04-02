@@ -34,7 +34,7 @@ $ cd Lisp-Programming
 ```
 $ (load "basic.lisp")
 ```
-4. Run any function you want: 
+5. Run any function you want: 
 ```
 $ (func arg1 arg2 ... argn)
 ```
