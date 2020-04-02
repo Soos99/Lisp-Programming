@@ -322,7 +322,7 @@
 
 ;REPL
 (defun repl (fun name)
-    (format t"Enter a list of arguements for ~s (empty list to stop): " name)
+    (format t"Enter a list of arguments for ~s (empty list (type () ) to stop): " name)
     (force-output nil)
     (setq input (read))
     (cond
