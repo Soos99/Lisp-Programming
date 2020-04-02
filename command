@@ -1,17 +1,20 @@
+//Suggested comment
+
+//Run project
 (load "project3.lisp")
 
+//List function
 (append '(a b c) '(d e f))
 (append '(1 3 x a) '(4 2 b))
-
 (reverse '(a b c))
-(callReverse '(a b c) '())
 (indexof 'a '(b c a d))
 (indexof 'e '(b c a d))
 (remove-all 'a '(b a c a a d a))
 (remove-all 'e '(b a c a e d e))
 (remove-all 'f '(b a c a e d e))
 
-
+//Set function
+(member 'a '(a b c d))
 (insert 'a '(b c d))
 (insert 'a '(a b c d))
 (intersection '(a b c) '(a c d))
@@ -21,6 +24,7 @@
 (union '(a b c) '(b c a))
 (union '(a b c) '(d e f))
 
+//Math function
 (abs 7)
 (abs -7)
 (abs 0)
@@ -34,8 +38,8 @@
 (nth-fibo 6)
 (nth-fibo 10)
 (nth-fibo -1)
-(getListFactor 5 5)
 
+//Other functions
 (perfectp 5)
 (perfectp 6)
 (abundantp 5)
